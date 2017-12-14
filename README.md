@@ -1,5 +1,9 @@
 # Command samples
-Tutorail based on [https://kafka.apache.org/quickstart] 
+This tutorial is based on 
+- [https://kafka.apache.org/quickstart]
+- [https://kafka.apache.org/10/documentation/streams/tutorial]
+- [https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Streams]
+- [https://dzone.com/articles/join-semantics-in-kafka-streams] 
 
 ## Download Kafka and Zookeeper
 ```bash
