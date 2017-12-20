@@ -1,3 +1,4 @@
-{"user":"smasyutin", "token":"123"}
-{"user":"iverhun", "token":"124"}
-{"user":"arymar", "token":"125"}
+{"user":"smasyutin", "token":"123", "ts": 1}
+{"user":"iverhun", "token":"124", "ts": 100}
+{"user":"arymar", "token":"125", "ts": 120}
+{"user":"smasyutin", "token":"126", "ts": 150}

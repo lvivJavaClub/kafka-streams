@@ -1,9 +1,12 @@
 # Command samples
 This tutorial is based on 
 - [https://kafka.apache.org/quickstart]
-- [https://kafka.apache.org/10/documentation/streams/tutorial]
 - [https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Streams]
-- [https://dzone.com/articles/join-semantics-in-kafka-streams] 
+- [https://docs.confluent.io/current/streams/concepts.html] 
+- [http://vishnuviswanath.com/kafka-streams-part2.html]
+- [https://kafka.apache.org/10/documentation/streams/tutorial]
+- [https://www.confluent.io/blog/data-reprocessing-with-kafka-streams-resetting-a-streams-application]
+- [https://kafka.apache.org/10/documentation/streams/developer-guide#streams_dsl_transform]
 
 ## Download Kafka and Zookeeper
 ```bash
@@ -28,13 +31,15 @@ $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
 
 ## Attach Kafka File System Connector
 ```bash
-$KAFKA_HOME/bin/connect-standalone.sh $KAFKA_HOME/config/connect-standalone.properties config/login-source.properties config/click-source.properties config/login-sink.properties config/click-sink.properties
+$KAFKA_HOME/bin/connect-standalone.sh config/connect-standalone.properties config/login-source.properties config/click-source.properties config/joined-sink.properties config/user-clicks-sink.properties
 
 cp data/login.txt /tmp/
 cp data/click.txt /tmp/
 
-echo \{"user":"nsurname", "token":"126"} >> /tmp/login.txt
-echo \{"token":"126", url:"projects.spring.io"} >> /tmp/click.txt
+echo \{\"user\":\"nsurname\", \"token\":\"126\", \"ts\":100} >> /tmp/login.txt
+echo \{\"token\":\"126\", \"url\":\"projects.spring.io\", \"ts\":120} >> /tmp/click.txt
+
+$KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic login-topic --from-beginning
 ```
 Check `*.sink.txt` files for changes
 
